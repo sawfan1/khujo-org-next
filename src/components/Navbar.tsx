@@ -3,7 +3,7 @@
 
 import * as React from "react"
 import Link from "next/link"
-import { CircleCheckIcon, CircleHelpIcon, CircleIcon, Handshake, House, LogIn, Search } from "lucide-react"
+import { Handshake, House, LogIn, Search } from "lucide-react"
 
 import {
   NavigationMenu,
@@ -12,7 +12,6 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
-  navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu"
 import { Button } from "@/components/ui/button"
 

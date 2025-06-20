@@ -1,6 +1,3 @@
-
-import { Button } from "@/components/ui/button";
-import { NavigationMenuDemo } from "@/components/NavigationMenuDemo";
 import Navbar from "@/components/Navbar";
 import Image from "next/image";
 import { Input } from "@/components/ui/input";
