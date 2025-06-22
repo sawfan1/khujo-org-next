@@ -1,6 +1,5 @@
 "use client"
 
-
 import * as React from "react"
 import Link from "next/link"
 import { Handshake, House, LogIn, Search } from "lucide-react"
@@ -135,7 +134,7 @@ export default function Navbar() {
         </NavigationMenuItem>
       </NavigationMenuList>
       </NavigationMenu>
-      <Button className="bg-indigo-400 hover:bg-indigo-600 cursor-pointer"><LogIn /> Log In</Button>
+      <Link href="/login"><Button className="bg-indigo-400 hover:bg-indigo-600 cursor-pointer"><LogIn /> Log In</Button></Link>
     </div>
   )
 }
