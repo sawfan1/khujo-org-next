@@ -86,7 +86,8 @@ export default function Home() {
               alt="A beautiful landscape"
               width={2432}
               height={1442}
-            /></FadeIn>
+            />
+          </FadeIn>
           </div>
         </div>
         </div>
