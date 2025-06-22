@@ -22,7 +22,7 @@ import FadeIn from "@/components/FadeIn";
 import { BriefcaseBusiness, User } from "lucide-react";
 import Link from "next/link";
 
-export function OnboardingSection5() {
+export default function SignUp() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
@@ -158,5 +158,3 @@ export function OnboardingSection5() {
     </div>
   );
 }
-
-export default OnboardingSection5;
