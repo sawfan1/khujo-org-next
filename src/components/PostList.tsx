@@ -51,6 +51,7 @@ export default function PostList() {
       {posts.length > 0 ? (
         <ul className='flex gap-4'>
           {posts.map((post) => (
+            <li key={post.id}>
             <div className="relative flex flex-col my-6 bg-white shadow-sm border border-slate-200 rounded-lg w-70">
   <div className="relative h- m-2.5 overflow-hidden text-white rounded-md">
     <img src="https://images.unsplash.com/photo-1540553016722-983e48a2cd10?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="card-image" />
@@ -68,7 +69,7 @@ export default function PostList() {
       Read more
     </button>
   </div>
-</div>  
+</div>  </li>
           ))}
         </ul>
       ) : (
