@@ -1,3 +1,5 @@
+"use client"
+
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -5,12 +7,40 @@ import { Label } from "@/components/ui/label"
 import { Github } from "lucide-react"
 import FadeIn from "./FadeIn"
 import Link from "next/link"
+import { useState } from "react"
+import { useRouter } from "next/navigation"
+import { createClient } from "@/lib/supabase/client"
 
 export function LoginForm({
   className,
   ...props
 }: React.ComponentProps<"form">) {
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+  const [error, setError] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const router = useRouter();
 
+  const handleLogin = async (e: React.FormEvent) => {
+    e.preventDefault()
+    const supabase = createClient();
+    setIsLoading(true);
+    setError(null)
+
+    try {
+      const { error } = await supabase.auth.signInWithPassword({
+        email,
+        password,
+      });
+      if (error) throw error;
+      // Update this route to redirect to an authenticated route. The user already has an active session.
+      router.push("/v1/dashboard");
+    } catch (error: unknown) {
+      setError(error instanceof Error ? error.message : "An error occurred");
+    } finally {
+      setIsLoading(false);
+    }
+  }
 
   return (
     <form className={cn("flex flex-col gap-6", className)} {...props}>
@@ -23,7 +53,7 @@ export function LoginForm({
       <div className="grid gap-6">
         <div className="grid gap-3">
           <Label htmlFor="email">Email</Label>
-          <Input id="email" type="email" placeholder="sajid@ihsan.com" required />
+          <Input onChange={(e) => {setEmail(e.target.value)}} id="email" type="email" placeholder="sajid@ihsan.com" required />
         </div>
         <div className="grid gap-3">
           <div className="flex items-center">
@@ -35,10 +65,11 @@ export function LoginForm({
               Forgot your password?
             </a>
           </div>
-          <Input id="password" type="password" required />
+          <Input onChange={(e) => {setPassword(e.target.value)}} id="password" type="password" required />
         </div>
-        <Button type="submit" className="w-full bg-teal-700 hover:bg-teal-800 cursor-pointer">
-          Login
+        {error && <p className="text-sm text-red-500">{error}</p>}
+        <Button onClick={handleLogin} type="submit" className="w-full bg-teal-700 hover:bg-teal-800 cursor-pointer">
+          {isLoading ? "Logging in..." : "Login"}
         </Button>
         <div className="after:border-border relative text-center text-sm after:absolute after:inset-0 after:top-1/2 after:z-0 after:flex after:items-center after:border-t">
           <span className="bg-background text-muted-foreground relative z-10 px-2">

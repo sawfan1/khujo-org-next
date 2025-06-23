@@ -1,8 +1,6 @@
-"use client"
-
 import * as React from "react"
 import Link from "next/link"
-import { Handshake, House, LogIn, Search } from "lucide-react"
+import { Handshake, House, LogIn, MoveUpRight, Search, SquareArrowOutUpRight } from "lucide-react"
 
 import {
   NavigationMenu,
@@ -15,6 +13,8 @@ import {
 import { Button } from "@/components/ui/button"
 
 import { Poppins } from "next/font/google";
+import { createClient } from "@/lib/supabase/client"
+import { AuthButton } from "./auth-button"
 
 const components: { title: string, description: string, href: string }[] = [
   {
@@ -46,7 +46,13 @@ const poppins = Poppins({
   variable: '--font-poppins'
 });
 
-export default function Navbar() {
+export default async function Navbar() {
+  const supabase = await createClient();
+
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
   return (
     <div className="flex items-center justify-between w-[90%] px-4">
       <h2 className="font-bold">KHUJO.org</h2>
@@ -134,7 +140,12 @@ export default function Navbar() {
         </NavigationMenuItem>
       </NavigationMenuList>
       </NavigationMenu>
-      <Link href="/login"><Button className="bg-indigo-400 hover:bg-indigo-600 cursor-pointer"><LogIn /> Log In</Button></Link>
+      {/* <div className="flex items-center gap-2">
+        {user ? (<Button className="cursor-pointer bg-teal-700 hover:bg-teal-800"><SquareArrowOutUpRight /> Dashboard</Button>) : 
+        <Link href="/login"><Button className="bg-indigo-400 hover:bg-indigo-600 cursor-pointer"><LogIn /> Log In</Button></Link>  
+        }
+      </div> */}
+      <AuthButton />
     </div>
   )
 }
