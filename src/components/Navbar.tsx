@@ -140,11 +140,6 @@ export default async function Navbar() {
         </NavigationMenuItem>
       </NavigationMenuList>
       </NavigationMenu>
-      {/* <div className="flex items-center gap-2">
-        {user ? (<Button className="cursor-pointer bg-teal-700 hover:bg-teal-800"><SquareArrowOutUpRight /> Dashboard</Button>) : 
-        <Link href="/login"><Button className="bg-indigo-400 hover:bg-indigo-600 cursor-pointer"><LogIn /> Log In</Button></Link>  
-        }
-      </div> */}
       <AuthButton />
     </div>
   )

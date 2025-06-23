@@ -4,6 +4,7 @@ import Navbar from "@/components/Navbar";
 import { Award, Briefcase, Clock, Heart, TrendingUp } from "lucide-react";
 import { useState } from "react";
 import Link from "next/link";
+import OnBoarding from "@/components/OnBoarding";
 
 export default function Dashboard() {
   const [isOpen, setIsOpen] = useState(false);
@@ -137,10 +138,13 @@ export default function Dashboard() {
             </div>
           </div>
         </div>
+        <div className="">
+<OnBoarding/>
 
+        </div>
     </div>
 
-
+        
 // stasts
   );
 }
