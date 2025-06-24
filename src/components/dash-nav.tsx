@@ -66,6 +66,13 @@ export default function Navbar() {
             >
               Profile
             </Link>
+
+            <Link
+              href="/v1/dashboard/create"
+              className="ml-2 block mt-4 lg:inline-block lg:mt-0 text-gray-600 hover:text-gray-900 mr-4 p-2 rounded-md hover:bg-gray-100 transition duration-300 ease-in-out"
+            >
+              Create
+            </Link>
             
           </div>
           <div><LogoutButton/></div>

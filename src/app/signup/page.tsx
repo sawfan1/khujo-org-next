@@ -78,9 +78,10 @@ export default function Component() {
           data: {
             role: formData.role,
             full_name: formData.name,
-            age: formData.age,
+            organization_name: formData.name,
+            age: formData.age ? formData.age : 0,
             location: formData.location,
-            organizationSize: formData.organizationSize
+            organization_size: formData.organizationSize
           }
         }
       });
@@ -88,6 +89,7 @@ export default function Component() {
       router.push("/auth/sign-up-success");
     } catch (error: unknown) {
       setError(error instanceof Error ? error.message : "An error occurred");
+      console.log(error)
     } finally {
       setIsLoading(false);
     }
@@ -373,7 +375,6 @@ export default function Component() {
               <span>
                 Step {currentStep} of {totalSteps}
               </span>
-              <span>{Math.round(progress)}%</span>
             </div>
             <Progress value={progress} className="h-2" />
           </div>
