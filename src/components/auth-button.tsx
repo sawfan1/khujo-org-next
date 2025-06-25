@@ -13,12 +13,22 @@ export async function AuthButton() {
 
   return user ? (
     <div className="flex items-center gap-2">
-      <a href="/v1/dashboard"><Button className="cursor-pointer bg-teal-700 hover:bg-teal-800"><SquareArrowOutUpRight /> Dashboard</Button></a>
+      <a href="/v2/dashboard">
+        <Button className="cursor-pointer bg-teal-700 hover:bg-teal-800">
+          <SquareArrowOutUpRight /> Dashboard
+        </Button>
+      </a>
       <LogoutButton />
     </div>
   ) : (
-      <Button asChild size="sm" className="p-4 bg-indigo-400 hover:bg-indigo-600 cursor-pointer">
-        <Link href="/login"><LogIn /> Log In</Link>
-      </Button>
+    <Button
+      asChild
+      size="sm"
+      className="p-4 bg-indigo-400 hover:bg-indigo-600 cursor-pointer"
+    >
+      <Link href="/login">
+        <LogIn /> Log In
+      </Link>
+    </Button>
   );
 }

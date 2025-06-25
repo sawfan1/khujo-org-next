@@ -1,10 +1,10 @@
 import {
   User,
-  Briefcase,
   Settings,
   FileText,
   Users,
   Image,
+  CirclePlus,
 } from "lucide-react";
 
 import {
@@ -35,19 +35,19 @@ const gettingStartedItems = [
 // Menu items for main section
 const mainItems = [
   {
-    title: "Hire Volunteers",
-    url: "#",
-    icon: Users,
-  },
-  {
     title: "View Events",
     url: "/v2/dashboard/view",
     icon: Image,
   },
   {
-    title: "Manage Tasks",
+    title: "Create Tasks",
+    url: "/v2/dashboard/create",
+    icon: CirclePlus,
+  },
+  {
+    title: "Hire Volunteers",
     url: "#",
-    icon: Briefcase,
+    icon: Users,
   },
   {
     title: "Settings",
