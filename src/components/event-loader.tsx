@@ -46,7 +46,10 @@ export default function EventLoader() {
         } = await supabase.auth.getUser();
 
         if (user) {
-          const { data, error } = await supabase.from("posts").select("*");
+          const { data, error } = await supabase
+            .from("posts")
+            .select("*")
+            .order("created_at", { ascending: false });
 
           if (data && !error) {
             setPosts(data);
